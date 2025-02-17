@@ -1,0 +1,695 @@
+{
+	"info": {
+		"_postman_id": "ef638516-63de-4415-afb1-6bb980842c33",
+		"name": "Venta Online",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37956964"
+	},
+	"item": [
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "RegisterAdmin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Ignacio Sebastian",
+									"type": "text"
+								},
+								{
+									"key": "surname",
+									"value": "Hernandez Payes",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "abcde",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "abcde@kinal.edu.gt",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "56833865Love5683.1357",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "531497209",
+									"type": "text"
+								},
+								{
+									"key": "rol",
+									"value": "ADMIN",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/v1/user/registerAdmin",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"v1",
+								"user",
+								"registerAdmin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = JSON.parse(responseBody);\r",
+									"postman.setGlobalVariable(\"token\", data.token)"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "userLogin",
+									"value": "abcde",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "56833865Love5683.1357",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/v1/user/login",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"v1",
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetUsers",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/v1/user/getUsersAdmin",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"v1",
+								"user",
+								"getUsersAdmin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EditUserAdmin",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Jose Alejandro s",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "surname",
+									"value": "Colorado Pineda Payes",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "username",
+									"value": "Cesar2",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "Cesar2@kinal.edu.gta",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "Aa!123456789",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "phone",
+									"value": "531497209",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "rol",
+									"value": "CLIENT",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/v1/user/editUserAdmin/67b2a4e4eccee368b400ecfb",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"v1",
+								"user",
+								"editUserAdmin",
+								"67b2a4e4eccee368b400ecfb"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteUserAdmin",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "password",
+									"value": "56833865Love5683.1357",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/v1/user/deleteUserAdmin/67b2a6f0473b682ad5b9f72f",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"v1",
+								"user",
+								"deleteUserAdmin",
+								"67b2a6f0473b682ad5b9f72f"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Client",
+			"item": [
+				{
+					"name": "RegisterClient",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Ignacio Sebastian",
+									"type": "text"
+								},
+								{
+									"key": "surname",
+									"value": "Hernandez Payes",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "a3",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "a3@kinal.edu.gt",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "56833865Love5683.1357",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "531497209",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/v1/user/registerClient",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"v1",
+								"user",
+								"registerClient"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = JSON.parse(responseBody);\r",
+									"postman.setGlobalVariable(\"token\", data.token)"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "userLogin",
+									"value": "Cesar1",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "56833865Love5683.1357",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/v1/user/login",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"v1",
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetUser",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/v1/user/getUser/67b2a4e4eccee368b400ecfb",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"v1",
+								"user",
+								"getUser",
+								"67b2a4e4eccee368b400ecfb"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EditUserClient",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Cesar",
+									"type": "text"
+								},
+								{
+									"key": "surname",
+									"value": "Alejandro",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "Cesar1",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "Cesar1@kinal.edu.gt",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "Aa!123456789",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "phone",
+									"value": "531497209",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "rol",
+									"value": "CLIENT",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/v1/user/editUserClient/67b2a4e4eccee368b400ecfb",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"v1",
+								"user",
+								"editUserClient",
+								"67b2a4e4eccee368b400ecfb"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteUserCLient",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "password",
+									"value": "56833865Love5683.1357",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/v1/user/deleteUserClient/67b2a6f0473b682ad5b9f72f",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"v1",
+								"user",
+								"deleteUserClient",
+								"67b2a6f0473b682ad5b9f72f"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Categories",
+			"item": [
+				{
+					"name": "SaveCategorie",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Ejercicio",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Aparatos para hacer ejercicio en casa",
+									"type": "text"
+								},
+								{
+									"key": "subCategories",
+									"value": "Pesas modernas",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/v1/categorie/saveCategories",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"v1",
+								"categorie",
+								"saveCategories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetCategories",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "localhost:3000/v1/categorie/getCategories",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"v1",
+								"categorie",
+								"getCategories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetCategorie",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "localhost:3000/v1/categorie/getCategorie/67b2ac0c30f8b7dbafd07ef8",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"v1",
+								"categorie",
+								"getCategorie",
+								"67b2ac0c30f8b7dbafd07ef8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EditCategorie",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Limpieza",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Asceo de la casa",
+									"type": "text"
+								},
+								{
+									"key": "subCategorie",
+									"value": "Cuidado de sanitarios",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/v1/categorie/editCategorie/67b2ac0c30f8b7dbafd07ef8",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"v1",
+								"categorie",
+								"editCategorie",
+								"67b2ac0c30f8b7dbafd07ef8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteCategorie",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "localhost:3000/v1/categorie/deleteCategorie/67b2ac0c30f8b7dbafd07ef8",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"v1",
+								"categorie",
+								"deleteCategorie",
+								"67b2ac0c30f8b7dbafd07ef8"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
