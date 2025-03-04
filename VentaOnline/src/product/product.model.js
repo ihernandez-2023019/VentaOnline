@@ -28,6 +28,11 @@ export const productSchema = Schema(
         stock:{
             type: Number,
             required: [true, 'Stock is required']
+        },
+        sold: {
+            type: Number,
+            required: true,
+            default: 0
         }
     }
 )

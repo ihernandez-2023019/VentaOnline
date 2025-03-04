@@ -149,7 +149,42 @@ export const deleteProduct = async (req, res) => {
         )
     }
 }
- 
+
+// Obtener productos agotados
+export const getOutOfStockProducts = async (req, res) => {
+    try{
+        const products = await Product.find(
+            {
+                stock: 0
+            }
+        )
+        if(products.length === 0){
+            return res.status(404).send(
+                {
+                    success: false,
+                    message: 'There is not products with not stock'
+                }
+            )
+        }
+        res.send(
+            {
+                success: true,
+                message: 'Products with not stock',
+                products
+            }
+        )
+    }catch(err){
+        console.error('General error', err)
+        return res.status(500).send(
+            {
+                success: false,
+                message: 'General error',
+                err
+            }
+        )
+    }
+}
+
 // Obtener productos más vendidos
 export const getTopSellingProducts = async (req, res) => {
     try {

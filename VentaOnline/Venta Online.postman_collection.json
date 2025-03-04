@@ -70,7 +70,7 @@
 					"response": []
 				},
 				{
-					"name": "Login",
+					"name": "LoginAdmin",
 					"event": [
 						{
 							"listen": "test",
@@ -276,12 +276,12 @@
 								},
 								{
 									"key": "username",
-									"value": "a3",
+									"value": "Cesar1",
 									"type": "text"
 								},
 								{
 									"key": "email",
-									"value": "a3@kinal.edu.gt",
+									"value": "Cesar1@kinal.edu.gt",
 									"type": "text"
 								},
 								{
@@ -312,7 +312,7 @@
 					"response": []
 				},
 				{
-					"name": "Login",
+					"name": "LoginClient",
 					"event": [
 						{
 							"listen": "test",
@@ -674,7 +674,7 @@
 							"urlencoded": []
 						},
 						"url": {
-							"raw": "localhost:3000/v1/categorie/deleteCategorie/67b2ac0c30f8b7dbafd07ef8",
+							"raw": "localhost:3000/v1/categorie/deleteCategorie/67c6119cdd989b7816220e11",
 							"host": [
 								"localhost"
 							],
@@ -683,7 +683,471 @@
 								"v1",
 								"categorie",
 								"deleteCategorie",
-								"67b2ac0c30f8b7dbafd07ef8"
+								"67c6119cdd989b7816220e11"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "CreateProduct",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Leche en caja 1 Litro",
+									"type": "text"
+								},
+								{
+									"key": "brand",
+									"value": "Dos pinos",
+									"type": "text"
+								},
+								{
+									"key": "categorie",
+									"value": "67b2abce66b1b85bc4b9e0d8",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "23.50",
+									"type": "text"
+								},
+								{
+									"key": "dateOfEntrance",
+									"value": "02/05/2023",
+									"type": "text"
+								},
+								{
+									"key": "stock",
+									"value": "15",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/v1/product/createProduct",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"v1",
+								"product",
+								"createProduct"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetProducts",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "localhost:3000/v1/product/getProducts",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"v1",
+								"product",
+								"getProducts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetProductByID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "localhost:3000/v1/product/getProduct/67c67bb92b32cf88f7f9784d",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"v1",
+								"product",
+								"getProduct",
+								"67c67bb92b32cf88f7f9784d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateProduct",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Coca-Cola 1.5 Litros",
+									"type": "text"
+								},
+								{
+									"key": "brand",
+									"value": "Cocacola",
+									"type": "text"
+								},
+								{
+									"key": "categorie",
+									"value": "67b2abce66b1b85bc4b9e0d8",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "15.50",
+									"type": "text"
+								},
+								{
+									"key": "dateOfEntrance",
+									"value": "02/05/2020",
+									"type": "text"
+								},
+								{
+									"key": "stock",
+									"value": "60",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/v1/product/updateProduct/67c67bb92b32cf88f7f9784d",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"v1",
+								"product",
+								"updateProduct",
+								"67c67bb92b32cf88f7f9784d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteProduct",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "localhost:3000/v1/product/deleteProduct/67c68d1a41677b75007aa76d",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"v1",
+								"product",
+								"deleteProduct",
+								"67c68d1a41677b75007aa76d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "OutOfStock",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "localhost:3000/v1/product/OutOfStockProducts",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"v1",
+								"product",
+								"OutOfStockProducts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TopSelling",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "localhost:3000/v1/product/TopSellingsProducts",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"v1",
+								"product",
+								"TopSellingsProducts"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Shopping Kart",
+			"item": [
+				{
+					"name": "addKart",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "userId",
+									"value": "67c67b812b32cf88f7f97842",
+									"type": "text"
+								},
+								{
+									"key": "productId",
+									"value": "67c67bb92b32cf88f7f9784d",
+									"type": "text"
+								},
+								{
+									"key": "quantity",
+									"value": "2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/v1/kart/add",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"v1",
+								"kart",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getKart",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "localhost:3000/v1/kart/getKart/67c67b812b32cf88f7f97842",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"v1",
+								"kart",
+								"getKart",
+								"67c67b812b32cf88f7f97842"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateProductKart",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "userId",
+									"value": "67c67b812b32cf88f7f97842",
+									"type": "text"
+								},
+								{
+									"key": "productId",
+									"value": "67c67bb92b32cf88f7f9784d",
+									"type": "text"
+								},
+								{
+									"key": "quantity",
+									"value": "2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/v1/kart/update",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"v1",
+								"kart",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteFromKart",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "userId",
+									"value": "67c67b812b32cf88f7f97842",
+									"type": "text"
+								},
+								{
+									"key": "productId",
+									"value": "67c67bb92b32cf88f7f9784d",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/v1/kart/remove",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"v1",
+								"kart",
+								"remove"
 							]
 						}
 					},

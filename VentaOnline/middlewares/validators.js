@@ -1,4 +1,4 @@
-import { body } from "express-validator"
+import { body, param } from "express-validator"
 import { validateErrors , validateErrorsWithoutFiles} from "./validate.errors.js"
 import { existEmail, existUsername , notRequiredField, notRequiredRoleField, existProductName} from "../utils/db.validators.js"
 
@@ -141,3 +141,43 @@ export const validateUpdateProduct = [
         .withMessage('Categoría inválida'),
     validateErrorsWithoutFiles
 ]
+
+export const validateAddToCart = [
+    body("userId")
+        .isMongoId()
+        .withMessage("Usuario inválido"),
+    body("productId")
+        .isMongoId()
+        .withMessage("Producto inválido"),
+    body("quantity")
+        .isInt({ min: 1 })
+        .withMessage("Cantidad inválida"),
+    validateErrorsWithoutFiles
+]
+
+export const validateGetCart = [
+    param("userId")
+        .isMongoId()
+        .withMessage("Usuario inválido")
+];
+
+export const validateRemoveFromCart = [
+    body("userId")
+        .isMongoId()
+        .withMessage("Usuario inválido"),
+    body("productId")
+        .isMongoId()
+        .withMessage("Producto inválido")
+];
+
+export const validateUpdateCartItem = [
+    body("userId")
+        .isMongoId()
+        .withMessage("Usuario inválido"),
+    body("productId")
+        .isMongoId()
+        .withMessage("Producto inválido"),
+    body("quantity")
+        .isInt({ min: 1 })
+        .withMessage("Cantidad inválida")
+];

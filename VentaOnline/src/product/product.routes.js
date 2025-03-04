@@ -5,6 +5,7 @@ import {
     getProductById,
     updateProduct,
     deleteProduct,
+    getOutOfStockProducts,
     getTopSellingProducts
 } from './product.controller.js'
 import { isAdmin, validateJwt } from "../../middlewares/validate.jwt.js"
@@ -53,6 +54,19 @@ api.delete(
     ],
     deleteProduct
 )
-api.get('/out-of-stock', getTopSellingProducts)
+api.get(
+    '/OutOfStockProducts',
+    [
+        validateJwt
+    ],
+    getOutOfStockProducts
+)
+api.get(
+    '/TopSellingsProducts',
+    [
+        validateJwt
+    ],
+    getTopSellingProducts
+)
  
 export default api
