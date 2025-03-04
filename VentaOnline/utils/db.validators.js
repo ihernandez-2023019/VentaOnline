@@ -1,4 +1,5 @@
 import User from '../src/user/user.model.js'
+import Product from '../src/product/product.model.js'
 
 export const existUsername = async(username, user)=>{
     const alreadyUsername = await User.findOne({username})
@@ -43,5 +44,13 @@ export const findUser = async(id)=>{
     }catch(err){
         console.error(err)
         return false
+    }
+}
+
+export const existProductName = async(name, product)=>{
+    const alreadyProductName= await Product.findOne({name})
+    if(alreadyProductName && alreadyProductName._id != product._id){
+        console.error(`Name ${name} is already taken`)
+        throw new Error(`Name ${name} is already taken`)
     }
 }

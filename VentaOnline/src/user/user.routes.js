@@ -5,8 +5,7 @@ import {
     getAdmin,
     editAdmin,
     deleteAdmin,
-    editClient,
-    deleteClient
+    editClient
 }from "./user.controller.js"
 import { updateUserAdminValidator, updateUserClientValidator } from '../../middlewares/validators.js'
 
@@ -46,20 +45,12 @@ api.put(
     editClient
 )
 api.delete(
-    '/deleteUserAdmin/:id',
+    '/deleteUser/:id',
     [
         validateJwt,
         isAdmin
     ],
     deleteAdmin
-)
-api.delete(
-    '/deleteUserClient/:id',
-    [
-        validateJwt,
-        isClient
-    ],
-    deleteClient
 )
 
 export default api

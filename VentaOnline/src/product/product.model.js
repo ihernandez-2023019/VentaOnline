@@ -1,31 +1,33 @@
-import { Schema } from "mongoose"
+import { Schema, model, Types } from "mongoose"
+import Categorie from "../categories/categories.model.js"
 
-const productSchema = Schema(
+export const productSchema = Schema(
     {
         name:{
             type: String,
             required: [true, 'Name is required'],
             maxLength: [30, `Can't be overcome 30 characters`]
         },
-        description:{
+        brand:{
             type: String,
-            required: [true, 'Description is required']
+            required: [true, 'Brand is required']
         },
         categorie:{
-            type: String,
+            type: Types.ObjectId,
+            ref: Categorie,
             required: [true, 'Categorie is required']
         },
         price:{
-            type: String,
+            type: Number,
             required: [true, 'Price is required']
         },
         dateOfEntrance:{
             type: String,
             required: [true, 'Date of Entrance is required']
         },
-        supplier:{
-            type: String,
-            requried: [true, 'supplier is required']
+        stock:{
+            type: Number,
+            required: [true, 'Stock is required']
         }
     }
 )

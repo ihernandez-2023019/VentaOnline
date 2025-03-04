@@ -1,6 +1,6 @@
 import { body } from "express-validator"
 import { validateErrors , validateErrorsWithoutFiles} from "./validate.errors.js"
-import { existEmail, existUsername , notRequiredField, notRequiredRoleField} from "../utils/db.validators.js"
+import { existEmail, existUsername , notRequiredField, notRequiredRoleField, existProductName} from "../utils/db.validators.js"
 
 
 export const registerValidator = [
@@ -28,7 +28,7 @@ export const registerValidator = [
     body('phone', 'Phone cannot be empty')
         .notEmpty()
         .isMobilePhone(),
-    validateErrors
+    validateErrorsWithoutFiles
 ]
 
 export const updateUserAdminValidator = [
@@ -99,9 +99,45 @@ export const updateUserClientValidator = [
         .optional()
         .notEmpty()
         .custom(notRequiredField),
-    body('rol')
+    body('role')
         .optional()
         .notEmpty()
         .custom(notRequiredRoleField),
+    validateErrorsWithoutFiles
+]
+
+export const validateProduct = [
+    body('name', 'Name cannot be empty')
+        .notEmpty()
+        .custom(existProductName),
+    body('brand', 'Brand cannot be empty')
+        .notEmpty(),
+    body('price', 'Price cannot be empty')
+        .isFloat({ gt: 0 })
+        .withMessage('El precio debe ser mayor a 0'),
+    body('stock', 'Stock cannot be empty')
+        .isInt({ min: 0 })
+        .withMessage('El stock no puede ser negativo'),
+    body('categorie')
+        .isMongoId()
+        .withMessage('Categoría inválida'),
+    validateErrorsWithoutFiles
+]
+
+export const validateUpdateProduct = [
+    body('name', 'Name cannot be empty')
+        .notEmpty()
+        .custom((name, { req })=> existProductName(name , req.product)),
+    body('brand', 'Brand cannot be empty')
+        .notEmpty(),
+    body('price', 'Price cannot be empty')
+        .isFloat({ gt: 0 })
+        .withMessage('El precio debe ser mayor a 0'),
+    body('stock', 'Stock cannot be empty')
+        .isInt({ min: 0 })
+        .withMessage('El stock no puede ser negativo'),
+    body('categorie')
+        .isMongoId()
+        .withMessage('Categoría inválida'),
     validateErrorsWithoutFiles
 ]
